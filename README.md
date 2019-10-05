@@ -29,6 +29,18 @@ npm start
 
 Open a browser window and navigate to `http://localhost:1234`. Open your JavaScript console and press the buttons on the webpage.
 
+## Getting started with the code
+
+The scala entry point describes a function for [processing messages](https://github.com/davesmith00000/elm-meets-scalajs/blob/master/scala/src/main/scala/ElmMailbox.scala) of the form `ElmMessage => ScalaMessage`.
+
+The JavaScript bridging code is a [one-liner](https://github.com/davesmith00000/elm-meets-scalajs/blob/master/index.js#L9).
+
+`LogMessage` asks for a message to be [sent to Scala](https://github.com/davesmith00000/elm-meets-scalajs/blob/master/src/Main.elm#L53) to be logged as a side effect.*
+
+The `Increment` and `Decrement` message types from the standard example also ask Scala to [double the values](https://github.com/davesmith00000/elm-meets-scalajs/blob/master/src/Main.elm#L44) via a Command, and when [Scala responds with the doubled value](https://github.com/davesmith00000/elm-meets-scalajs/blob/master/src/Main.elm#L56) the model is updated as normal ready for rendering into HTML by the view.
+
+(*I'm still thinking about this. Currently even a side effecting action returns a message to Elm, it's just that the event is a NoOp in Elm. That's probably fine since Elm is very efficient. On the other hand: Should the JS bridge filter out NoOps? Should the function allow you to optionally return a message? Is there some better encoding for saying "no need to tell Elm about this..."?)
+
 ## Motivation
 
 Elm is very [marmite](https://en.wikipedia.org/wiki/Marmite), but in my opinion Elm is the best way to do general frontend development, however, it starts to seriously break down in two key areas:
@@ -65,4 +77,3 @@ Given that the solution presented is both asynchronous and relys on JSON encodin
 Important to note though that although it is not expected to be a performant solution, the anticipated invokation frequency is in response to *human* activity i.e. very infrequent, and therefore performance is actually not a concern at all.
 
 Equally, doing this in a game loop would be a terrible idea!
-
