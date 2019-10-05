@@ -2,7 +2,7 @@
 
 An example of two-way messaging between Elm and Scala.js.
 
-I've taken the standard "counter" elm example and extended it slightly to show how we can invoke and respond to Scala.js via messaging.
+I've taken the standard "counter" Elm example and extended it slightly to show how we can invoke and respond to Scala.js via messaging.
 
 ## Running the example
 
