@@ -1,0 +1,24 @@
+
+*.class
+*.log
+.DS_Store
+
+# sbt specific
+sbt
+.sbt-local
+.cache
+.history
+.lib
+dist
+target
+lib_managed
+src_managed
+.idea
+*.iml
+volumes
+bin
+env.properties
+node_modules
+elm-stuff
+.metals/
+.bloop
